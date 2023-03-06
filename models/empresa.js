@@ -20,6 +20,7 @@ const EmpresaSchema = Schema({
         type: String,
         required: true,
     },
+  
     sucursal :[{
         type: Schema.Types.ObjectId,
         ref: 'Sucursal',

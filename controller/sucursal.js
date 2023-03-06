@@ -2,78 +2,54 @@ const { response, request } = require('express');
 
 const Sucursal = require('../models/sucursal');
 const { Promise } = require('mongoose');
+const Empresa = require('../models/empresa');
 
-const getSucursal = async (req = request, res = response) => {
 
-   
-
-    const listaSucursal = await Promise.all([
-        Sucursal.countDocuments(),
-        Sucursal.find().populate('empresa','nombre')
-    ]);
-
-    res.json({
-        msg: 'Get Api de categoria',
-        listaSucursal
-    })
-}
-
-const getSucursalId = async (req = request, res = response) => {
-
-    const { id } = req.params;
-    const sucursal = await Sucursal.findById(id).populate('empresa','nombre')
-
-    res.json({
-        msg: 'Get Api de categoria',
-        sucursal
-    })
-}
-
-const postSucursal= async (req = request, res = response) => {
-    const  nombre  = req.body.nombre.toUpperCase()
-    const sucursalDb = await Sucursal.findOne({nombre});
-    const direcciones = req.body.direcciones.toUpperCase()
-    const municipio = req.body.municipio.toUpperCase()
+const postSucursal = async (req = request, res = response) => {
+    const nombre = req.body.nombre
+    const sucursalDb = await Sucursal.findOne({ nombre });
+    const direccion = req.body.direccion
+    const municipio = req.body.municipio
     if (sucursalDb) {
         return res.status(400).json({
-            msg: `la sucursal ${sucursalDb.nombre}, ya existe en la db`
+            msg: `La sucursal ${sucursalDb.nombre}, ya existe en la db`
         })
     }
-    
-    const data ={
+
+    const data = {
         nombre,
         empresa: req.empresa._id,
-        sucursalDb,
-        direcciones,
+        direccion,
         municipio
     }
 
     const sucursalAgregada = new Sucursal(data);
 
-    await sucursalAgregada.save()
+    await sucursalAgregada.save();
+    await Empresa.findByIdAndUpdate(
+        req.empresa._id,
+        { $addToSet: { sucursal: sucursalAgregada._id } },
+        { new: true }
+    );
 
     res.status(201).json({
-        msg: 'Post api',
+        msg: 'La sucursal ha sido agregada correctamente',
         sucursalAgregada,
-        
+
     })
 
 }
 
-const putSucursal= async (req = request, res = response) => {
+const putSucursal = async (req = request, res = response) => {
     const { id } = req.params;
-
-    const { _id, empresa , ...resto } = req.body;
+    const { _id, empresa, ...resto } = req.body;
 
     resto.nombre = resto.nombre.toUpperCase()
-    
     resto.empresa = req.empresa._id
-
-    //edicion de categoria 
-    const editarSucursal = await Sucursal.findByIdAndUpdate(id, resto,{new:true});
+    const editarSucursal = await Sucursal.findByIdAndUpdate(id, resto, { new: true });
 
     res.json({
-        msg: "api para editar",
+        msg: "La sucursal ha sido editada correctamente",
         editarSucursal
     })
 }
@@ -82,19 +58,16 @@ const deleteSucursal = async (req = request, res = response) => {
     const { id } = req.params;
     const sucursalBorrada = await Sucursal.findByIdAndDelete(id);
 
-
     res.json({
-        msg: "api para borrar",
+        msg: "La sucursal ha sido eliminada correctamente",
         sucursalBorrada
     })
 }
 
 
 module.exports = {
-    getSucursal,
     postSucursal,
     putSucursal,
     deleteSucursal,
-    getSucursalId,
-    
+
 }

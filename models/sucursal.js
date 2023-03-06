@@ -11,7 +11,7 @@ const SucursalSchema = Schema({
         required: true
     },
 
-    direcciones: {
+    direccion: {
         type: String,
         required: [false, 'la direccion es obligatorio']
     },
