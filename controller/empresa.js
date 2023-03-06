@@ -1,7 +1,7 @@
 const { response, request } = require('express');
 const bcryptjs = require('bcryptjs');
 
-const Empresa = require('../models/empresaModel');
+const Empresa = require('../models/empresa');
 
 const { Promise } = require('mongoose');
 

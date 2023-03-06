@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-const {  getSucursal, postSucursal, putSucursal, deleteSucursal, getSucursalId}= require('../controller/sucursalController');
+const {  getSucursal, postSucursal, putSucursal, deleteSucursal, getSucursalId}= require('../controller/sucursal');
 const { idSucursal, exiteMunicipio } = require('../helpers/db-validators');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarJWT } = require('../middlewares/validar-jwt');
@@ -20,8 +20,6 @@ router.post('/agregar',[
     check('nombre','el nombre es obligatorio para agregar').not().isEmpty(),
     validarCampos
 ], postSucursal);
-
-
 
 router.put('/editar/:id',[
     validarJWT,

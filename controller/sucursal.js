@@ -1,6 +1,6 @@
 const { response, request } = require('express');
 
-const Sucursal = require('../models/sucursalModel');
+const Sucursal = require('../models/sucursal');
 const { Promise } = require('mongoose');
 
 const getSucursal = async (req = request, res = response) => {

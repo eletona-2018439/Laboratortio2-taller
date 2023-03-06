@@ -40,8 +40,8 @@ class Server {
     
     routes(){
         this.app.use(this.paths.auth , require('../routes/auth'))
-        this.app.use(this.paths.sucursal , require('../routes/sucursalRutas'))
-        this.app.use(this.paths.empresa , require('../routes/empresaRutas'))
+        this.app.use(this.paths.sucursal , require('../routes/sucursal'))
+        this.app.use(this.paths.empresa , require('../routes/empresa'))
        
       
     }
