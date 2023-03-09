@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "cd97285a-531a-4136-ada3-5d7cc3547e68",
+		"name": "control-empresas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Taco bell\",\r\n    \"correo\": \"burrito@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"tipo\": \"Restaurante\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/api/empresa/registro"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"correo\": \"burrito@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/api/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Listado de Empresas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "localhost:8080/api/empresa/mostrar"
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Empresa",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDA2ZDc0ZmM2MmFhZWRkZDg0NmI4OWEiLCJpYXQiOjE2NzgxNjk5NjksImV4cCI6MTY3ODE4NDM2OX0.D0Q6d6Z1XP5FIkwkCDFnwzVKRvLA7RGM9b7nBqFEWV8",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Banrural\",\r\n    \"correo\": \"banrural@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"tipo\": \"Banco\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/api/empresa/agregar"
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Empresa",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDA2ZDc0ZmM2MmFhZWRkZDg0NmI4OWEiLCJpYXQiOjE2NzgxNjk5NjksImV4cCI6MTY3ODE4NDM2OX0.D0Q6d6Z1XP5FIkwkCDFnwzVKRvLA7RGM9b7nBqFEWV8",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Banco Industrial\",\r\n    \"correo\": \"bancoindustrial@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"tipo\": \"Banco\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/api/empresa/editar/6406dd18e7c4eeb7581e02f2"
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Empresa",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDA2ZDc0ZmM2MmFhZWRkZDg0NmI4OWEiLCJpYXQiOjE2NzgxNjk5NjksImV4cCI6MTY3ODE4NDM2OX0.D0Q6d6Z1XP5FIkwkCDFnwzVKRvLA7RGM9b7nBqFEWV8",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "localhost:8080/api/empresa/eliminar/6406dd18e7c4eeb7581e02f2"
+			},
+			"response": []
+		},
+		{
+			"name": "Listado de Sucursales",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/api/empresa/mostrarSucursal/6406d74fc62aaeddd846b89a"
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Sucursal",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDA2ZDc0ZmM2MmFhZWRkZDg0NmI4OWEiLCJpYXQiOjE2NzgxNjk5NjksImV4cCI6MTY3ODE4NDM2OX0.D0Q6d6Z1XP5FIkwkCDFnwzVKRvLA7RGM9b7nBqFEWV8",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Sucursal Roosevelt\",\r\n    \"municipio\":\"Villa Nueva\",\r\n    \"direccion\":\"Zona 4\",\r\n    \"empresa\":\"6406d74fc62aaeddd846b89a\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/api/sucursal/agregar"
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Sucursal",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDA2ZDc0ZmM2MmFhZWRkZDg0NmI4OWEiLCJpYXQiOjE2NzgxNjk5NjksImV4cCI6MTY3ODE4NDM2OX0.D0Q6d6Z1XP5FIkwkCDFnwzVKRvLA7RGM9b7nBqFEWV8",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Sucursal San Juan\",\r\n    \"municipio\":\"Mixco\",\r\n    \"direccion\":\"Zona 6\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/api/sucursal/editar/6406e1cf4078bd24b1b4d1f1"
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Sucursal",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDA2ZDc0ZmM2MmFhZWRkZDg0NmI4OWEiLCJpYXQiOjE2NzgxNjk5NjksImV4cCI6MTY3ODE4NDM2OX0.D0Q6d6Z1XP5FIkwkCDFnwzVKRvLA7RGM9b7nBqFEWV8",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "localhost:8080/api/sucursal/eliminar/6406e1cf4078bd24b1b4d1f1"
+			},
+			"response": []
+		}
+	]
+}
